@@ -11,7 +11,7 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("test") {
+        stage("Host_test") {
             steps {
                 sh 'hosthame'
             }
