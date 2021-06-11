@@ -15,6 +15,7 @@ pipeline {
             steps {
                 dir ('DockerDir/Test'){
                 sh 'docker build . '
+                }
             }
         }
     }
