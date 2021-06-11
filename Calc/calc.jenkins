@@ -14,6 +14,7 @@ pipeline {
         stage("create image & start container") {
             steps {
                 dir ('Calc'){
+                sh 'docker rmi web_calc'
                 sh 'docker build -t web_calc . '
                 sh 'docker run --rm web_calc'
                 }
