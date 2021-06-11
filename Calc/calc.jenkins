@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage("create image") {
             steps {
-                dir ('calc'){
+                dir ('Calc'){
                 sh 'docker build -t web_calc . '
                 }
             }
