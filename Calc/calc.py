@@ -12,7 +12,7 @@ def calc_operation(a, b, operation):
             return "Invalid operation";
 
 
-q=5
-w=4
-e='-'
+q=660
+w=6
+e='+'
 print (calc_operation(q,w,e))
