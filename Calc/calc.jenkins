@@ -11,10 +11,11 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("create image") {
+        stage("create image & start container") {
             steps {
                 dir ('Calc'){
                 sh 'docker build -t web_calc . '
+                sh 'docker run --rm web_calc'
                 }
             }
         }
