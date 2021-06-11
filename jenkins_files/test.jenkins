@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage("Host_test") {
             steps {
-                sh '\'hosthame\''
+                sh 'echo "Hello"'
             }
         }
     }
