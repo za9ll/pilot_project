@@ -1,1 +1,22 @@
+#!groovy
 
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'master'
+    }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("create image") {
+            steps {
+                dir ('calc'){
+                sh 'docker build -t web_calc . '
+                }
+            }
+        }
+    }
+}
