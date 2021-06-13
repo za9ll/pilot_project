@@ -17,7 +17,7 @@ pipeline {
                 dir ('Calc'){
                 //sh 'docker rmi $(docker images -f dangling=true -q)'
                 sh 'docker build -t web_calc . '
-                sh 'docker run --rm web_calc'
+                sh 'docker run -d -p 5000:5000 --rm web_calc'
                 }
             }
         }
