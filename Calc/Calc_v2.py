@@ -1,3 +1,4 @@
+curl -X POST -H "Content-Type: application/json" --data '{"left":5, "right":5, "operator":"-"}' http://10.0.2.15:5000/count_up
 from flask import Flask
 app = Flask(__name__)
 
