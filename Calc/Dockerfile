@@ -4,5 +4,8 @@ RUN mkdir -p /usr/src/web_calc/
 WORKDIR /usr/src/web_calc/
 
 COPY . /usr/src/web_calc/
+RUN pip install flask
+
+EXPOSE 5000
 
 CMD ["python", "calc.py"]
