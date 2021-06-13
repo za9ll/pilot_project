@@ -40,5 +40,11 @@ def count_up():
     else:
         return 'invalid operand "left" \n'
     
+@app.route('/', methods=["POST"])
+def hello():
+    print(request.json)
+    return request.json
+
+    
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
