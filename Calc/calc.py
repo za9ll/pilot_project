@@ -3,9 +3,18 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-def division(a, b):
-    if b !=0:
-        return str(int(a / b))
+def add(left, right):
+    return left + right 
+
+def minus(left, right):
+    return left - right 
+
+def multiplication(left, right):
+    return left * right 
+   
+def division(left, right):
+    if right !=0:
+        return left / right
     else:
         return 'division by zero \n'
 
@@ -20,6 +29,13 @@ def is_digit(num):
         return True
     else:
         return False
+    
+d_operator = {
+  '+': add,
+  '-': minus,
+  '*': multiplication,
+  '/': division
+}
 
 #def chek_operator(trans):
 @app.route("/count_up", methods=["POST"])
@@ -27,21 +43,17 @@ def count_up():
     d = request.json    
     if is_digit(d.get('left', None)):
         if is_digit(d.get('right', None)):
-            if chek_data(d.get('operator', None)):
-                d_operator = { '+': str(d['left'] + d['right']), '-': str(d['left'] - d['right']),'*': str(d['left'] * d['right']),'/': division(d['left'], d['right'])}
-                if chek_data(d_operator.get(d['operator'], None)):
-                    return d_operator[d['operator']] + '\n'
-                else:
-                    return 'invalid operator \n'
+            if chek_data(d.get('operator', None)) and chek_data(d_operator.get(d['operator'], None)):
+                return d_operator[d['operator']](d['left'], d['right'])
             else:
                 return 'invalid operator \n'
         else:
             return 'invalid operand "right" \n'
     else:
-        return 'invalid operand "left" \n'
+        return 'invalid operand "left"\n'
     
 @app.route('/', methods=["POST"])
-def hello():
+def help():
     print(request.json)
     return request.json
 
