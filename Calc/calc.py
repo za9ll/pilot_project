@@ -37,6 +37,8 @@ d_operator = {
   '/': division
 }
 
+d = {}
+
 #def chek_operator(trans):
 @app.route("/count_up", methods=["POST"])
 def count_up():
