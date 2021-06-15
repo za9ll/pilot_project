@@ -12,10 +12,16 @@ pipeline {
         timestamps()
     }
     stages {   
-       stage("Del image & Stop container") {
+       stage("Stop container") {
             steps {
                 dir('Calc'){
                 sh 'docker stop calc'
+                }
+            }
+        }
+        stage("Del image") {
+            steps {
+                dir('Calc'){
                 sh 'docker rmi web_calc'
                 }
             }
