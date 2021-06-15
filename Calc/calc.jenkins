@@ -12,6 +12,11 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("Del old files") {
+            steps {
+                //sh 'docker rmi $(docker images -f dangling=true -q)'
+            }
+        }
         stage("create image & start container") {
             steps {
                 dir ('Calc'){
