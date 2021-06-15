@@ -23,5 +23,4 @@ pipeline {
                 sh 'docker run -d -p 2000:2000 --rm --name calc web_calc'
             }
         }
-    }
-}
+  }
