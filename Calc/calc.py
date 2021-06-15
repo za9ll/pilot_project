@@ -37,7 +37,7 @@ d_operator = {
   '/': division
 }
 
-d = {}
+#d = {}
 
 #def chek_operator(trans):
 @app.route("/count_up", methods=["POST"])
@@ -46,7 +46,7 @@ def count_up():
     if is_digit(d.get('left', None)):
         if is_digit(d.get('right', None)):
             if chek_data(d.get('operator', None)) and chek_data(d_operator.get(d['operator'], None)):
-                return str(d_operator[d['operator']](d['left'], d['right']))
+                return str(d_operator[d['operator']](d['left'], d['right'])) + '\n'
             else:
                 return 'invalid operator \n'
         else:
