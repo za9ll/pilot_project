@@ -11,7 +11,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
-        
+    stages {   
        stage("del image") {
             steps {
                 sh 'docker rmi web_calc'
@@ -23,4 +23,5 @@ pipeline {
                 sh 'docker run -d -p 2000:2000 --rm --name calc web_calc'
             }
         }
-  }
+    }
+}
