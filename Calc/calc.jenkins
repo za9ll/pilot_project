@@ -11,12 +11,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
-    stages {
-        stage("Del old files") {
-            steps {
-                //sh 'docker rmi $(docker images -f dangling=true -q)'
-            }
-        }
         stage("create image & start container") {
             steps {
                 dir ('Calc'){
