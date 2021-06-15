@@ -19,8 +19,10 @@ pipeline {
         }
         stage("Bild image & Run container") {
             steps {
+                dir('Calc'){
                 sh 'docker build -t web_calc . '
                 sh 'docker run -d -p 2000:2000 --rm --name calc web_calc'
+                }
             }
         }
     }
