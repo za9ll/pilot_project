@@ -6,6 +6,6 @@ WORKDIR /usr/src/web_calc/
 COPY . /usr/src/web_calc/
 RUN pip install flask
 
-EXPOSE 5000
+EXPOSE 2000
 
 CMD ["python", "calc.py"]
