@@ -12,26 +12,17 @@ pipeline {
         timestamps()
     }
     stages {   
-       stage("Stop container") {
+       stage("Stop container and del image") {
             steps {
                 dir('Calc'){
-                sh 'docker stop calc'
-                }
-            }
-        }
-        stage("Del image") {
-            steps {
-                dir('Calc'){
-                sh 'docker rmi web_calc'
+                sh 'python3 stopIdel.py'
                 }
             }
         }
         stage("Bild image & Run container") {
             steps {
-                dir('Calc'){
                 sh 'docker build -t web_calc . '
                 sh 'docker run -d -p 2000:2000 --rm --name calc web_calc'
-                }
             }
         }
     }
